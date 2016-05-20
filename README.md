@@ -1,5 +1,5 @@
 # goto
-A script to speed up commandline SSH and SCP connects from MAC OSX
+A script to speed up commandline SSH and sftp connects from MAC OSX
 If a Machine is unreachable, an optional ping may be used
 
 BE AWARE: This tool is by default configured for internal use only and will ignore changing SSH Hostkeys. 
@@ -12,8 +12,8 @@ Usage:
 	    Hostname: IP or Name which may be looked up
 		Port    : Port of the target machine ( default: 22 )
 		User    : Username to login with
-		Mode    : Mode may be scp or ping
-		          scp  : open scp connection
+		Mode    : Mode may be sftp or ping
+		          sftp  : open sftp connection
 
 
 Installation:
@@ -88,4 +88,18 @@ Example 3:
     ******************************************
     Opening hostname_nodns : 22 as webrene
     ******************************************  
+   
+
+   
+Example 4:
+----------
+
+    webrene$ goto sftp myhost
+
+    ******************************************
+    Opening myhost : 22 as root
+    ******************************************
+    
+    ### THIS WILL OPEN YOUR DEFAULT SFTP CLIENT VIA
+    ### 'open sftp://$user\@$connecthost:$port"'
     

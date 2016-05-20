@@ -3,7 +3,7 @@
 
 ##############################################################
 ## Author:  Rene Weber
-## Purpose: Make SSH/SCP Connects faster
+## Purpose: Make SSH/sftp Connects faster
 ##
 ## How it works: See Help Function ( -h --help help ) 
 ## 
@@ -88,8 +88,8 @@ NAME : 1. Check for alias Definitions in $my_links file to use
        2. If not found, try to resolve as hostname
        3. If not resolvable, offer possiblity to add new alias entry 
 
-MODE: Possibilities are 'ping' or 'scp'. 
-      scp  : Open SFTP Connection
+MODE: Possibilities are 'ping' or 'sftp'. 
+      sftp  : Open SFTP Connection
        
 EOF
 
@@ -106,9 +106,9 @@ if ( $ARGV[0] =~ m/help/ || $ARGV[0] =~ m/'-h'/ || $ARGV[0] =~ m/--help/  ) {
 	exit 1;
 }
 
-if ( lc $ARGV[0] eq "scp" ){
+if ( lc $ARGV[0] eq "sftp" ){
 
-	$othermode = "scp";
+	$othermode = "sftp";
 	shift( @ARGV );
 }
 
@@ -119,8 +119,8 @@ if ( $#ARGV < 0 ){
 	print "\t\t\t Hostname: IP or Name which may be looked up\n";
 	print "\t\t\t Port    : Port of the target machine ( default: 22 )\n";
 	print "\t\t\t User    : Username to login with ( default as in Config or root )\n";
-	print "\t\t\t Mode    : Mode may be scp or ping\n";
-	print "\t\t\t           scp  : open scp connection\n";
+	print "\t\t\t Mode    : Mode may be sftp or ping\n";
+	print "\t\t\t           sftp  : open sftp connection\n";
 	
 	print "\n\n\n";
 
@@ -277,7 +277,7 @@ print "\n";
 
 system("echo \"\033]0;$user\@$connecthost:$port\007\"");
 
-if( $othermode eq "scp" ){
+if( $othermode eq "sftp" ){
 	
 	system("open sftp://$user\@$connecthost:$port");
 
